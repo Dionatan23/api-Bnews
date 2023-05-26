@@ -1,11 +1,9 @@
 const express = require("express");
-const userRoute = require("./src/routers/user.router")
-
 const app = express()
 
-app.use('/soma', userRoute)
-  
+const userRoute = require("./src/routers/user.router")
+const port = 3000
 
-app.listen(3000, () => {
-    console.log('Server is running on porta 3000')
-})
+app.use(express.json())
+app.use("/user", userRoute)
+app.listen(port, () => console.log(`Server rodando na porta ${port}`))
